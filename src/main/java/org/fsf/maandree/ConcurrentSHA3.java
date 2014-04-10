@@ -1,7 +1,10 @@
 package org.fsf.maandree;
 
+import de.serverfrog.util.EncodingHelper;
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
+import java.util.Arrays;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
@@ -624,7 +627,7 @@ public class ConcurrentSHA3 {
                 int i = 0;
                 while ((i < ni) && (j < nn)) {
                     long v = this.S[(i % 5) * 5 + i / 5];
-                    for (int _ = 0; _ < ww; _++) {
+                    for (int incrementor = 0; incrementor < ww; incrementor++) {
                         if (j < nn) {
                             rc[ptr] = (byte) v;
                             ptr += 1;
@@ -716,7 +719,7 @@ public class ConcurrentSHA3 {
             int i = 0;
             while ((i < ni) && (j < nn)) {
                 long v = this.S[(i % 5) * 5 + i / 5];
-                for (int _ = 0; _ < ww; _++) {
+                for (int incrementor = 0; incrementor < ww; incrementor++) {
                     if (j < nn) {
                         rc[ptr] = (byte) v;
                         ptr += 1;
@@ -740,13 +743,25 @@ public class ConcurrentSHA3 {
 
     public static void main(String[] args) throws IOException {
         ConcurrentSHA3 sHA3 = new ConcurrentSHA3();
-        sHA3.initialise(128, 4094, 128);
+        sHA3.initialise(512, 4, 128);
         sHA3.update("This is a Test String that will kill you".getBytes());
-        BASE64Encoder encoder = new BASE64Encoder();
-        String encode = encoder.encode(sHA3.squeeze());
-        System.out.println(encode);
-        BASE64Decoder decoder = new BASE64Decoder();
-        ByteBuffer decodeBufferToByteBuffer = decoder.decodeBufferToByteBuffer(encode);
-        System.out.println(new String(decodeBufferToByteBuffer.array()));
+
+        System.out.println("");
+        for (byte b : sHA3.digest()) {
+            System.out.print(b + " ");
+        }
+        System.out.println("");
+        sHA3 = new ConcurrentSHA3();
+        sHA3.initialise(512, 4, 128);
+        sHA3.update("This is a Test String that will kill you.".getBytes());
+        for (byte b : sHA3.digest()) {
+            System.out.print(b + " ");
+        }
+        System.out.println("");
+        EncodingHelper eh = new EncodingHelper();
+        eh.small().big(3).numbers(10).custome(10, new char[]{'@'});
+
+        System.out.println("encode: " + eh.encode(sHA3.squeeze()));
+
     }
 }
