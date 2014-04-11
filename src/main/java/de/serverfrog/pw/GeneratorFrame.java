@@ -24,8 +24,9 @@
 package de.serverfrog.pw;
 
 import static de.serverfrog.pw.WebsiteType.*;
-import java.util.Arrays;
+import java.net.URL;
 import javax.swing.ComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.event.ListDataListener;
 
 /**
@@ -85,6 +86,9 @@ public class GeneratorFrame extends javax.swing.JFrame {
      */
     public GeneratorFrame() {
         initComponents();
+        URL imgURL = getClass().getResource("/icon.png");
+        ImageIcon myAppImage = new ImageIcon(imgURL);
+        setIconImage(myAppImage.getImage());
     }
 
     /**
