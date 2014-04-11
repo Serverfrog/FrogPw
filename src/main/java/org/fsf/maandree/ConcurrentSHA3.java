@@ -1,12 +1,7 @@
 package org.fsf.maandree;
 
-import de.serverfrog.util.EncodingHelper;
+import de.serverfrog.pw.EncodingHelper;
 import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.nio.charset.Charset;
-import java.util.Arrays;
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
 
 /**
  * sha3sum – SHA-3 (Keccak) checksum calculator
@@ -741,27 +736,4 @@ public class ConcurrentSHA3 {
         return rc;
     }
 
-    public static void main(String[] args) throws IOException {
-        ConcurrentSHA3 sHA3 = new ConcurrentSHA3();
-        sHA3.initialise(512, 4, 128);
-        sHA3.update("This is a Test String that will kill you".getBytes());
-
-        System.out.println("");
-        for (byte b : sHA3.digest()) {
-            System.out.print(b + " ");
-        }
-        System.out.println("");
-        sHA3 = new ConcurrentSHA3();
-        sHA3.initialise(512, 4, 128);
-        sHA3.update("This is a Test String that will kill you.".getBytes());
-        for (byte b : sHA3.digest()) {
-            System.out.print(b + " ");
-        }
-        System.out.println("");
-        EncodingHelper eh = new EncodingHelper();
-        eh.small().big(3).numbers(10).custome(10, new char[]{'@'});
-
-        System.out.println("encode: " + eh.encode(sHA3.squeeze()));
-
-    }
 }
