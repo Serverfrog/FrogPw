@@ -10,10 +10,12 @@
     
     <artifactId>FrogPw-Android</artifactId>
     <packaging>apk</packaging>
+    
     <properties>        
         <android.version>2.1.2</android.version>
         <android.platform>7</android.platform>
         <android.path>${env.ANDROID_HOME}</android.path>
+        <android.mavenversion>3.8.2</android.mavenversion>
     </properties>
     
     <build>
@@ -28,7 +30,7 @@
             <plugin>
                 <groupId>com.jayway.maven.plugins.android.generation2</groupId>
                 <artifactId>android-maven-plugin</artifactId>
-                <version>3.7.0</version>
+                <version>${android.mavenversion}</version>
                 <extensions>true</extensions>
                 <configuration>
                     <dexCoreLibrary>true</dexCoreLibrary>  allow javax.xml.* be overriden

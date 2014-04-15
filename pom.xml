@@ -51,15 +51,7 @@
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
     </properties>
-    
-    <pluginRepositories>
-        <pluginRepository>
-            <id>sonatype-nexus-snapshots</id>
-            <name>Sonatype Nexus Snapshots</name>
-            <url>https://oss.sonatype.org/content/repositories/google-snapshots/</url>
-        </pluginRepository>
-    </pluginRepositories>
-    
+
     <build>
         <finalName>FrogPasswordGenerator</finalName>
         <plugins>
