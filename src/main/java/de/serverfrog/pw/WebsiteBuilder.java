@@ -24,7 +24,7 @@
 package de.serverfrog.pw;
 /**
  * 
- * @author bastianvenz
+ * @author serverfrog
  */
 
 public class WebsiteBuilder {

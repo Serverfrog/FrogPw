@@ -27,7 +27,7 @@ import org.fsf.maandree.ConcurrentSHA3;
 
 /**
  *
- * @author bastianvenz
+ * @author serverfrog
  */
 public final class SHA3Util {
 

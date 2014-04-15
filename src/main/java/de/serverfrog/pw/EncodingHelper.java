@@ -28,7 +28,7 @@ import java.util.List;
 
 /**
  *
- * @author bastianvenz
+ * @author serverfrog
  */
 public class EncodingHelper {
 

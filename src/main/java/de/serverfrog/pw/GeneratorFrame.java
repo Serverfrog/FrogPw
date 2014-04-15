@@ -31,7 +31,7 @@ import javax.swing.event.ListDataListener;
 
 /**
  *
- * @author bastianvenz
+ * @author serverfrog
  */
 public class GeneratorFrame extends javax.swing.JFrame {
 
