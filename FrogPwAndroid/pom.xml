@@ -13,6 +13,7 @@
     <properties>        
         <android.version>2.1.2</android.version>
         <android.platform>7</android.platform>
+        <android.path>${env.ANDROID_HOME}</android.path>
     </properties>
     
     <build>
