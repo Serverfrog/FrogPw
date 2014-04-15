@@ -1,5 +1,5 @@
-<<<<<<< OURS
+
 language: java
 =======
 language: java
->>>>>>> THEIRS
+language: java
