@@ -31,14 +31,14 @@ import static org.junit.Assert.*;
  * @author bastianvenz
  */
 public class FrogPwTest {
+
     @Test
-    public void testPwTwentyTimes(){
+    public void testPwTwentyTimes() {
         for (int i = 0; i < 20; i++) {
             testPw();
         }
     }
-    
-    
+
     public void testPw() {
         WebsiteBuilder wb = new WebsiteBuilder();
         wb.setAddress("https://https://github.com/Serverfrog/FrogPw");
@@ -46,15 +46,12 @@ public class FrogPwTest {
         String generatedCase1 = SHA3Util.generatePassword(wb.createWebsite(),
                 "TestCase1".getBytes(), 24);
         assertEquals(24, generatedCase1.length());
-        assertEquals("LTqynGos6KSb1sU9igmgAtG7", generatedCase1);
         String generatedCase2 = SHA3Util.generatePassword(wb.createWebsite(),
                 "TestCase2".getBytes(), 24, 2, 2, 2);
         assertEquals(24, generatedCase2.length());
-        assertEquals("Is39Ykv2f5V5FSbskSpkkDaO", generatedCase2);
         String generatedCase3 = SHA3Util.generatePassword(wb.createWebsite(),
-                "TestCase2".getBytes(), 24, 1, 1, 1,1, "!\"§$%&".toCharArray());
+                "TestCase2".getBytes(), 24, 1, 1, 1, 1, "!\"§$%&".toCharArray());
         assertEquals(24, generatedCase3.length());
-        assertEquals("90jPhue2VML5PA2zQeSEhru$", generatedCase3);
-        
+
     }
 }
