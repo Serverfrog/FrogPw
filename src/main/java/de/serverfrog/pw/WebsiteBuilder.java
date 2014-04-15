@@ -22,6 +22,10 @@
  * SOFTWARE.
  */
 package de.serverfrog.pw;
+/**
+ * 
+ * @author bastianvenz
+ */
 
 public class WebsiteBuilder {
 

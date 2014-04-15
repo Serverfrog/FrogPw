@@ -1,8 +1,5 @@
 package org.fsf.maandree;
 
-import de.serverfrog.pw.EncodingHelper;
-import java.io.IOException;
-
 /**
  * sha3sum – SHA-3 (Keccak) checksum calculator
  *
@@ -25,8 +22,8 @@ import java.io.IOException;
  * SHA-3/Keccak hash algorithm implementation with support for concurrent
  * threads
  *
- * @author Mattias Andrée <a
- * href="mailto:maandree@member.fsf.org">maandree@member.fsf.org</a>
+ * @author Mattias Andrée
+ * <a href="mailto:maandree@member.fsf.org">maandree@member.fsf.org</a>
  */
 public class ConcurrentSHA3 {
 
@@ -41,13 +38,6 @@ public class ConcurrentSHA3 {
         0x8000000000008002L, 0x8000000000000080L, 0x000000000000800AL, 0x800000008000000AL,
         0x8000000080008081L, 0x8000000000008080L, 0x0000000080000001L, 0x8000000080008008L};
 
-    /**
-     * <p>
-     * Constructor</p>
-     * <p>
-     * Do not forget to run {@link #Initialise(int, int, int)}
-     * </p>
-     */
     public ConcurrentSHA3() {
         /* Do nothing */
     }

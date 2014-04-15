@@ -23,16 +23,11 @@
  */
 package de.serverfrog.pw;
 
-import de.serverfrog.pw.Website;
-import de.serverfrog.pw.WebsiteBuilder;
-import de.serverfrog.pw.WebsiteType;
-import java.awt.AWTEventMulticaster;
-import java.util.Arrays;
 import org.fsf.maandree.ConcurrentSHA3;
 
 /**
  *
- * @author bastian.venz
+ * @author bastianvenz
  */
 public final class SHA3Util {
 

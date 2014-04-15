@@ -25,7 +25,7 @@ package de.serverfrog.pw;
 
 /**
  *
- * @author bastian.venz
+ * @author bastianvenz
  */
 public class Website {
 
