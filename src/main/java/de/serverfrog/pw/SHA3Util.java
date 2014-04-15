@@ -47,7 +47,7 @@ public final class SHA3Util {
 
     public static String generatePassword(Website website, byte[] password,
             int size, int smallCount, int bigCount, int numberCount,
-            int customeCount, char... customeChars) {
+            int customeCount, char[] customeChars) {
         String passwordEnd;
         EncodingHelper eh = new EncodingHelper();
         if (smallCount > 0) {

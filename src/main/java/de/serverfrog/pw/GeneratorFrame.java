@@ -79,7 +79,7 @@ public class GeneratorFrame extends javax.swing.JFrame {
         }
 
     }
-    private EnumComboBoxModel c = new EnumComboBoxModel();
+    private final EnumComboBoxModel c = new EnumComboBoxModel();
 
     /**
      * Creates new form TestFrame
