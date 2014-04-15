@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">MainActivity</string>
+<string name="website">Website:</string>
+<string name="small"></string>
+<string name="app_name">Frog PW Generator</string>
+<string name="masterpassword">Master Password</string>
+<string name="website_name">Website Name</string>
 </resources>
