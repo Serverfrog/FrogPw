@@ -91,6 +91,8 @@
                 <configuration>
                     <archive>
                         <manifest>
+                            <mainClass>de.serverfrog.pw.GeneratorFrame</mainClass>
+                            <addClasspath>true</addClasspath>
                             <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
                             <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
                         </manifest>
