@@ -1,125 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     android:id="@+id/widget32"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView
-        android:id="@+id/widget89"
+    <LinearLayout
+        android:id="@+id/widget90"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-        <LinearLayout
-            android:id="@+id/widget90"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+        <EditText
+            android:id="@+id/mPasswordField"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:orientation="vertical">
-            <EditText
-                android:id="@+id/mPasswordField"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@strings+/masterpassword"
-                android:textSize="18sp"
-                android:password="true" />
-            <TextView
-                android:id="@+id/widget39"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@strings+/website" />
-            <EditText
-                android:id="@+id/websiteName"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@strings+/website_name"
-                android:textSize="18sp" />
-            <Spinner
-                android:id="@+id/websiteType"
-                android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@strings+/masterpassword"
+            android:textSize="18sp"
+            android:password="true" />
+        <TextView
+            android:id="@+id/widget39"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@strings+/website" />
+        <EditText
+            android:id="@+id/websiteName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@strings+/website_name"
+            android:textSize="18sp" />
+        <Spinner
+            android:id="@+id/websiteType"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/widget57"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="small" />
+        <LinearLayout
+            android:id="@+id/widget50"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <CheckBox
+                android:id="@+id/widget52"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/widget57"
+            <EditText
+                android:id="@+id/widget63"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="small" />
-            <LinearLayout
-                android:id="@+id/widget50"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
-                <CheckBox
-                    android:id="@+id/widget52"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <EditText
-                    android:id="@+id/widget63"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="EditText"
-                    android:textSize="18sp"
-                    android:layout_weight="1" />
-            </LinearLayout>
-            <TextView
-                android:id="@+id/widget58"
+                android:text="EditText"
+                android:textSize="18sp"
+                android:layout_weight="1" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/widget58"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="big" />
+        <LinearLayout
+            android:id="@+id/widget50_copy"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <CheckBox
+                android:id="@+id/widget52"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/widget64"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="big" />
-            <LinearLayout
-                android:id="@+id/widget50_copy"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
-                <CheckBox
-                    android:id="@+id/widget52"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <EditText
-                    android:id="@+id/widget64"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="EditText"
-                    android:textSize="18sp"
-                    android:layout_weight="1" />
-            </LinearLayout>
-            <TextView
-                android:id="@+id/widget59"
+                android:text="EditText"
+                android:textSize="18sp"
+                android:layout_weight="1" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/widget59"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="numbers" />
+        <LinearLayout
+            android:id="@+id/widget50_copy"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <CheckBox
+                android:id="@+id/widget52"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="numbers" />
-            <LinearLayout
-                android:id="@+id/widget50_copy"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
-                <CheckBox
-                    android:id="@+id/widget52"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <EditText
-                    android:id="@+id/widget65"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="EditText"
-                    android:textSize="18sp"
-                    android:layout_weight="1" />
-            </LinearLayout>
-            <TextView
-                android:id="@+id/widget246"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Special" />
-            <LinearLayout
-                android:id="@+id/widget50_copy_copy"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
-                <CheckBox
-                    android:id="@+id/widget52"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <EditText
-                    android:id="@+id/widget65"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="EditText"
-                    android:textSize="18sp"
-                    android:layout_weight="1" />
-            </LinearLayout>
+                android:layout_height="wrap_content" />
             <EditText
                 android:id="@+id/widget65"
                 android:layout_width="wrap_content"
@@ -127,17 +94,45 @@
                 android:text="EditText"
                 android:textSize="18sp"
                 android:layout_weight="1" />
-            <Button
-                android:id="@+id/widget371"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Button" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/widget246"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Special" />
+        <LinearLayout
+            android:id="@+id/widget50_copy_copy"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <CheckBox
+                android:id="@+id/widget52"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
             <EditText
-                android:id="@+id/widget372"
-                android:layout_width="fill_parent"
+                android:id="@+id/widget65"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="EditText"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:layout_weight="1" />
         </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+        <EditText
+            android:id="@+id/widget65"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EditText"
+            android:textSize="18sp"
+            android:layout_weight="1" />
+        <Button
+            android:id="@+id/widget371"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Button" />
+        <EditText
+            android:id="@+id/widget372"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="EditText"
+            android:textSize="18sp" />
+    </LinearLayout>
+</ScrollView>
