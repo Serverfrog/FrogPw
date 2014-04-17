@@ -1,5 +1,7 @@
 package org.fsf.maandree;
 
+import de.serverfrog.pw.SHA3Util;
+
 /**
  * sha3sum – SHA-3 (Keccak) checksum calculator
  *
@@ -331,7 +333,7 @@ public class ConcurrentSHA3 {
             this.message[len - 1] = -128;
         }
 
-        System.arraycopy(msg, 0, this.message, 0, nrf);
+        SHA3Util.arraycopy(msg, 0, this.message, 0, nrf);
         return len;
     }
 
@@ -381,13 +383,13 @@ public class ConcurrentSHA3 {
         int ww = this.w >> 3;
 
         if (this.mptr + msglen > this.M.length) {
-            System.arraycopy(this.M, 0, this.M = new byte[(this.M.length + msglen) << 1], 0, this.mptr);
+            SHA3Util.arraycopy(this.M, 0, this.M = new byte[(this.M.length + msglen) << 1], 0, this.mptr);
         }
-        System.arraycopy(msg, 0, this.M, this.mptr, msglen);
+        SHA3Util.arraycopy(msg, 0, this.M, this.mptr, msglen);
         int len = this.mptr += msglen;
         len -= len % ((this.r * this.b) >> 3);
-        System.arraycopy(this.M, 0, (this.message.length < len) ? (this.message = new byte[len]) : this.message, 0, len);
-        System.arraycopy(this.M, len, this.M, 0, this.mptr -= len);
+        SHA3Util.arraycopy(this.M, 0, (this.message.length < len) ? (this.message = new byte[len]) : this.message, 0, len);
+        SHA3Util.arraycopy(this.M, len, this.M, 0, this.mptr -= len);
         int n = Math.min(len, rr);
 
         /* Absorbing phase */
@@ -525,9 +527,9 @@ public class ConcurrentSHA3 {
             len = this.pad10star1(this.M, this.mptr, this.r);
         } else {
             if (this.mptr + msglen > this.M.length) {
-                System.arraycopy(this.M, 0, this.M = new byte[this.M.length + msglen], 0, this.mptr);
+                SHA3Util.arraycopy(this.M, 0, this.M = new byte[this.M.length + msglen], 0, this.mptr);
             }
-            System.arraycopy(msg, 0, this.M, this.mptr, msglen);
+            SHA3Util.arraycopy(msg, 0, this.M, this.mptr, msglen);
             len = this.pad10star1(this.M, this.mptr + msglen, this.r);
         }
 

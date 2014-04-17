@@ -11,7 +11,7 @@
     
     <modules>
         <module>FrogPw-Core</module>
-        <module>FrogPwAndroid</module>
+        <module>FrogPw-Android</module>
     </modules>
     
     <name>FrogPw</name>

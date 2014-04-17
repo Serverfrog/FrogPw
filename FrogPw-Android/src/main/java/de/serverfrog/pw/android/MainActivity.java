@@ -19,6 +19,7 @@ import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
+import org.androidannotations.api.BackgroundExecutor;
 
 @EActivity
 public class MainActivity extends Activity {
@@ -127,13 +128,13 @@ public class MainActivity extends Activity {
                 && specialCharCount == 0 && specialChars.trim().isEmpty()) {
             return;
         }
-
+        BackgroundExecutor.cancelAll("generator", true);
         generatePassword(createWebsite, password, strenght, smallCharCount,
                 bigCharCount, numbersCharCount, specialCharCount, specialChars,
                 shouldSpecial.isChecked());
     }
 
-    @Background
+    @Background(id = "generator", serial = "generator")
     void generatePassword(Website createWebsite, String password,
             int strenght, int smallCharCount, int bigCharCount, int numbersCharCount,
             int specialCharCount, String specialChars, boolean withSpecial) {

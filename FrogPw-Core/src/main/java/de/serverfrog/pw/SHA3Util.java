@@ -71,19 +71,12 @@ public final class SHA3Util {
         }
         String chars = sb1.toString();
         byte[] hash = hash(password);
-        System.out.println("Hash:" + Arrays.toString(hash));
         hash = hash(add(hash, website.getAddress().getBytes()));
-        System.out.println("Hash:" + Arrays.toString(hash));
         hash = hash(add(hash, website.getType().getName().getBytes()));
-        System.out.println("Hash:" + Arrays.toString(hash));
         hash = hash(add(hash, website.getType().getKey().getBytes()));
-        System.out.println("Hash:" + Arrays.toString(hash));
         hash = hash(add(hash, chars.getBytes()));
-        System.out.println("Hash:" + Arrays.toString(hash));
         hash = hash(add(hash, new byte[]{Integer.valueOf(size).byteValue()}), size);
-        System.out.println("Hash:" + Arrays.toString(hash));
         passwordEnd = eh.encode(hash);
-        System.out.println("Hash:" + Arrays.toString(hash));
         return passwordEnd;
     }
 
@@ -93,21 +86,35 @@ public final class SHA3Util {
 
     private static byte[] hash(byte[] bytes, int size) {
         byte[] hashbytes = new byte[bytes.length];
-        System.arraycopy(bytes, 0, hashbytes, 0, bytes.length);
+        SHA3Util.arraycopy(bytes, 0, hashbytes, 0, bytes.length);
         ConcurrentSHA3 sHA3 = new ConcurrentSHA3();
         sHA3.initialise(512, 512, size * 8);
         for (byte b : hashbytes) {
-            sHA3.update(new byte[]{b}, 1);
+            sHA3.update(new byte[]{b, 1});
             sHA3.simpleSqueeze(32);
         }
         return sHA3.digest();
     }
 
+    public static void arraycopy(long[] src, int srcPos,
+            long[] dest, int destPos, int length) {
+        for (int i = 0; i < length; i++) {
+            dest[destPos + i] = src[srcPos + i];
+        }
+    }
+
+    public static void arraycopy(byte[] src, int srcPos,
+            byte[] dest, int destPos, int length) {
+        for (int i = 0; i < length; i++) {
+            dest[destPos + i] = src[srcPos + i];
+        }
+    }
+
     private static byte[] add(byte[] bytes, byte[] toAdd) {
         byte[] addBytes = new byte[toAdd.length + bytes.length];
-        System.arraycopy(bytes, 0, addBytes, 0, bytes.length);
-        System.arraycopy(toAdd, 0, addBytes, bytes.length, toAdd.length);
-        return (new String(bytes) + new String(toAdd)).getBytes();
+        SHA3Util.arraycopy(bytes, 0, addBytes, 0, bytes.length);
+        SHA3Util.arraycopy(toAdd, 0, addBytes, bytes.length, toAdd.length);
+        return addBytes;
     }
 
 }
