@@ -1,0 +1,66 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>FrogPw</artifactId>
+        <groupId>de.serverfrog.pw</groupId>
+        <version>0.1</version>
+    </parent>
+    
+    <artifactId>FrogPw-Android</artifactId>
+    <packaging>apk</packaging>
+    
+    <properties>        
+        <android.version>2.1.2</android.version>
+        <android.platform>7</android.platform>
+        <android.path>${env.ANDROID_HOME}</android.path>
+        <android.mavenversion>3.8.2</android.mavenversion>
+    </properties>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+                <artifactId>android-maven-plugin</artifactId>
+                <version>${android.mavenversion}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <undeployBeforeDeploy>true</undeployBeforeDeploy>
+                    <sdk>
+                        <platform>${android.platform}</platform>
+                        <path>${android.path}</path>
+                    </sdk>
+                    <resourceDirectory>${project.basedir}/src/main/resources</resourceDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    
+    <dependencies>
+        <dependency>
+            <groupId>com.google.android</groupId>
+            <artifactId>android</artifactId>
+            <version>${android.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.androidannotations</groupId>
+            <artifactId>androidannotations</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>FrogPw-Core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+</project>
