@@ -33,7 +33,6 @@
                 <version>${android.mavenversion}</version>
                 <extensions>true</extensions>
                 <configuration>
-                    <dexCoreLibrary>true</dexCoreLibrary>  allow javax.xml.* be overriden
                     <undeployBeforeDeploy>true</undeployBeforeDeploy>
                     <sdk>
                         <platform>${android.platform}</platform>
@@ -52,6 +51,16 @@
             <artifactId>android</artifactId>
             <version>${android.version}</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.androidannotations</groupId>
+            <artifactId>androidannotations</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>FrogPw-Core</artifactId>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 </project>

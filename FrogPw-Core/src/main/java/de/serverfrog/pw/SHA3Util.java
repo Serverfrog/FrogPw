@@ -23,6 +23,7 @@
  */
 package de.serverfrog.pw;
 
+import java.util.Arrays;
 import org.fsf.maandree.ConcurrentSHA3;
 
 /**
@@ -70,12 +71,19 @@ public final class SHA3Util {
         }
         String chars = sb1.toString();
         byte[] hash = hash(password);
+        System.out.println("Hash:" + Arrays.toString(hash));
         hash = hash(add(hash, website.getAddress().getBytes()));
+        System.out.println("Hash:" + Arrays.toString(hash));
         hash = hash(add(hash, website.getType().getName().getBytes()));
+        System.out.println("Hash:" + Arrays.toString(hash));
         hash = hash(add(hash, website.getType().getKey().getBytes()));
+        System.out.println("Hash:" + Arrays.toString(hash));
         hash = hash(add(hash, chars.getBytes()));
+        System.out.println("Hash:" + Arrays.toString(hash));
         hash = hash(add(hash, new byte[]{Integer.valueOf(size).byteValue()}), size);
+        System.out.println("Hash:" + Arrays.toString(hash));
         passwordEnd = eh.encode(hash);
+        System.out.println("Hash:" + Arrays.toString(hash));
         return passwordEnd;
     }
 

@@ -8,26 +8,28 @@
     <LinearLayout
         android:id="@+id/widget90"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">        
         <EditText
-            android:id="@+id/mPasswordField"
+            android:id="@+id/passwordField"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@strings+/masterpassword"
+            android:hint="@+string/masterpassword"
             android:textSize="18sp"
-            android:password="true" />
+            android:password="true"
+            android:inputType="textPassword"/>
         <TextView
             android:id="@+id/widget39"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@strings+/website" />
+            android:text="@+string/website" />
         <EditText
             android:id="@+id/websiteName"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@strings+/website_name"
-            android:textSize="18sp" />
+            android:hint="@+string/website_name"
+            android:textSize="18sp"
+            android:inputType="textUri" />
         <Spinner
             android:id="@+id/websiteType"
             android:layout_width="fill_parent"
@@ -36,103 +38,126 @@
             android:id="@+id/widget57"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="small" />
+            android:text="@+string/small" />
         <LinearLayout
             android:id="@+id/widget50"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
             <CheckBox
-                android:id="@+id/widget52"
+                android:id="@+id/shouldSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <EditText
-                android:id="@+id/widget63"
-                android:layout_width="wrap_content"
+                android:id="@+id/smallCount"
+                android:layout_width="0dip"
                 android:layout_height="wrap_content"
-                android:text="EditText"
+                android:hint="@+string/count"
                 android:textSize="18sp"
-                android:layout_weight="1" />
+                android:digits="123456789"
+                android:layout_weight="1"
+                android:inputType="number"
+                android:maxLength="1"/>
         </LinearLayout>
         <TextView
             android:id="@+id/widget58"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="big" />
+            android:text="@+string/big" />
         <LinearLayout
             android:id="@+id/widget50_copy"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
             <CheckBox
-                android:id="@+id/widget52"
+                android:id="@+id/shouldBig"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <EditText
-                android:id="@+id/widget64"
-                android:layout_width="wrap_content"
+                android:id="@+id/bigCount"
+                android:layout_width="0dip"
                 android:layout_height="wrap_content"
-                android:text="EditText"
+                android:hint="@+string/count"
                 android:textSize="18sp"
-                android:layout_weight="1" />
+                android:digits="123456789"
+                android:layout_weight="1"
+                android:inputType="number"
+                android:maxLength="1"/>
         </LinearLayout>
         <TextView
             android:id="@+id/widget59"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="numbers" />
+            android:text="@+string/numbers" />
         <LinearLayout
-            android:id="@+id/widget50_copy"
+            android:id="@+id/widget51"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
             <CheckBox
-                android:id="@+id/widget52"
+                android:id="@+id/shouldNumbers"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <EditText
-                android:id="@+id/widget65"
-                android:layout_width="wrap_content"
+                android:id="@+id/numbersCount"
+                android:layout_width="0dip"
                 android:layout_height="wrap_content"
-                android:text="EditText"
+                android:hint="@+string/count"
                 android:textSize="18sp"
-                android:layout_weight="1" />
+                android:digits="123456789"
+                android:layout_weight="1"
+                android:inputType="number"
+                android:maxLength="1"/>
         </LinearLayout>
         <TextView
-            android:id="@+id/widget246"
+            android:id="@+id/widget60"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Special" />
+            android:text="@+string/special" />
         <LinearLayout
-            android:id="@+id/widget50_copy_copy"
+            android:id="@+id/widget52"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
             <CheckBox
-                android:id="@+id/widget52"
+                android:id="@+id/shouldSpecial"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <EditText
-                android:id="@+id/widget65"
-                android:layout_width="wrap_content"
+                android:id="@+id/specialCount"
+                android:layout_width="0dip"
                 android:layout_height="wrap_content"
-                android:text="EditText"
+                android:hint="@+string/count"
                 android:textSize="18sp"
-                android:layout_weight="1" />
+                android:digits="123456789"
+                android:layout_weight="1"
+                android:inputType="number"
+                android:maxLength="1"/>
         </LinearLayout>
         <EditText
-            android:id="@+id/widget65"
-            android:layout_width="wrap_content"
+            android:id="@+id/specialChars"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="EditText"
+            android:text="@+string/specialChars"
             android:textSize="18sp"
-            android:layout_weight="1" />
+            android:inputType="textNoSuggestions" />
+            <EditText
+                android:id="@+id/strength"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="@+string/strength"
+                android:textSize="18sp"
+                android:digits="0123456789"
+                android:inputType="number"
+                android:maxLength="2"/>
         <Button
-            android:id="@+id/widget371"
+            android:id="@+id/generate"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="@+string/generate" />
         <EditText
-            android:id="@+id/widget372"
+            android:id="@+id/outputPassword"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="EditText"
-            android:textSize="18sp" />
+            android:text=""
+            android:textSize="18sp"
+            android:inputType="none"
+            android:editable="false"/>
     </LinearLayout>
 </ScrollView>

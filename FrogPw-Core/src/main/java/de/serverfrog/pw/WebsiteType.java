@@ -27,7 +27,6 @@ package de.serverfrog.pw;
  *
  * @author serverfrog
  */
-
 public enum WebsiteType {
 
     DEFAULT("default", "$3A=mC6X5^*Qbae-GfUr,7V&@KD%p&'rP;%EKzYC.rf!e^aR]dX=.L"
@@ -76,6 +75,16 @@ public enum WebsiteType {
 
     public String getKey() {
         return key;
+    }
+
+    public static WebsiteType getByName(String name) {
+        for (WebsiteType websiteType : values()) {
+            if (websiteType.getName().equalsIgnoreCase(name)) {
+                return websiteType;
+            }
+        }
+        throw new IllegalArgumentException(
+                "It don't exist a WebsiteType with the name=" + name);
     }
 
 }
