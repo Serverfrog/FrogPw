@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string name="app_name">Frog PW Generator</string>
-<string name="masterpassword">Master Password</string>
-<string name="website">Website:</string>
-<string name="website_name">Website Name</string>
-<string name="count">How much?</string>
-<string name="small">a-z</string>
-<string name="big">A-Z</string>
-<string name="numbers">0-9</string>
-<string name="special">Special Chars</string>
-<string name="specialChars">!"§$%/()=?*'_:;,.#+|~\}][{öäüÖÄÜ@€</string>
-<string name="generate">Generate Password</string>
-<string name="strength">Password Strength</string>
+    <string name="app_name">Frog Password Generator</string>
+    <string name="masterpassword">Master Password</string>
+    <string name="website">Website:</string>
+    <string name="website_name">Website Name</string>
+    <string name="count">weighting?</string>
+    <string name="small">a \u2013 z</string>
+    <string name="big">A \u2013 Z</string>
+    <string name="numbers">0 \u2013 9</string>
+    <string name="special">Special Chars</string>
+    <string name="specialChars">!"$%/()=?*'_:;,.#+|~\}][{@€</string>
+    <string name="generate">Generate Password</string>
+    <string name="strength">Password Strength</string>
 </resources>

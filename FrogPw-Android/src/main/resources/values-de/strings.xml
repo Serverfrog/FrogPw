@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Frog Passwort Generator</string>
+    <string name="masterpassword">Haupt-Passwort</string>
+    <string name="website">Webseite:</string>
+    <string name="website_name">Webseiten Namen</string>
+    <string name="count">gewichtung?</string>
+    <string name="small">a \u2013 z</string>
+    <string name="big">A \u2013 Z</string>
+    <string name="numbers">0 \u2013 9</string>
+    <string name="special">Sonderzeichen</string>
+    <string name="specialChars">!"§$%/()=?*'_:;,.#+|~\}][{öäüÖÄÜ@€</string>
+    <string name="generate">Generiere Passwort</string>
+    <string name="strength">Passwort Stärke</string>
+</resources>

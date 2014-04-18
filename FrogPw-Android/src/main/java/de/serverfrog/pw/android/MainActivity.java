@@ -91,6 +91,14 @@ public class MainActivity extends Activity {
 
     @Click(R.id.generate)
     public void onGenerateButtonPressed() {
+
+        if (strengthField.getEditableText().toString().isEmpty()) {
+            return;
+        }
+        int strenght = Integer.valueOf(strengthField.getEditableText().toString());
+        if (strenght <= 0) {
+            return;
+        }
         WebsiteType websiteType = WebsiteType.getByName(
                 (String) websiteTypeSpinner.getSelectedItem());
         WebsiteBuilder wb = new WebsiteBuilder();
@@ -102,10 +110,6 @@ public class MainActivity extends Activity {
         int numbersCharCount = 0;
         int specialCharCount = 0;
         String specialChars = "";
-        int strenght = Integer.valueOf(strengthField.getEditableText().toString());
-        if (strenght <= 0) {
-            return;
-        }
 
         if (shouldSmall.isChecked()) {
             smallCharCount = Integer.valueOf(
