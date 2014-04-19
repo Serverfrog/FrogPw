@@ -5,7 +5,7 @@
     <parent>
         <artifactId>FrogPw</artifactId>
         <groupId>de.serverfrog.pw</groupId>
-        <version>0.1</version>
+        <version>0.1.2</version>
     </parent>
     
     <artifactId>FrogPw-Core</artifactId>
