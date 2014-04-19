@@ -45,18 +45,6 @@ public class MainActivity extends Activity {
     @ViewById(R.id.shouldSpecial)
     CheckBox shouldSpecial;
 
-    @ViewById(R.id.smallCount)
-    EditText smallCount;
-
-    @ViewById(R.id.bigCount)
-    EditText bigCount;
-
-    @ViewById(R.id.numbersCount)
-    EditText numbersCount;
-
-    @ViewById(R.id.specialCount)
-    EditText specialCount;
-
     @ViewById(R.id.specialChars)
     EditText specialCharsField;
 
@@ -105,36 +93,19 @@ public class MainActivity extends Activity {
         Website createWebsite = wb.setAddress(websiteName.getEditableText().toString())
                 .setType(websiteType).createWebsite();
         String password = passwordField.getEditableText().toString();
-        int smallCharCount = 0;
-        int bigCharCount = 0;
-        int numbersCharCount = 0;
-        int specialCharCount = 0;
         String specialChars = "";
-
-        if (shouldSmall.isChecked()) {
-            smallCharCount = Integer.valueOf(
-                    smallCount.getEditableText().toString());
-        }
-        if (shouldBig.isChecked()) {
-            bigCharCount = Integer.valueOf(
-                    bigCount.getEditableText().toString());
-        }
-        if (shouldNumbers.isChecked()) {
-            numbersCharCount = Integer.valueOf(
-                    numbersCount.getEditableText().toString());
-        }
         if (shouldSpecial.isChecked()) {
-            specialCharCount = Integer.valueOf(
-                    specialCount.getEditableText().toString());
+
             specialChars = specialCharsField.getEditableText().toString();
         }
-        if (smallCharCount == 0 && bigCharCount == 0 && numbersCharCount == 0
-                && specialCharCount == 0 && specialChars.trim().isEmpty()) {
+        if (shouldSmall.isChecked() && shouldBig.isChecked() && shouldNumbers.isChecked()
+                && shouldSpecial.isChecked() && specialChars.trim().isEmpty()) {
             return;
         }
         BackgroundExecutor.cancelAll("generator", true);
-        generatePassword(createWebsite, password, strenght, smallCharCount,
-                bigCharCount, numbersCharCount, specialCharCount, specialChars,
+        generatePassword(createWebsite, password, strenght, (shouldSmall.isChecked()) ? 1 : 0,
+                (shouldBig.isChecked()) ? 1 : 0, (shouldNumbers.isChecked()) ? 2 : 0,
+                (shouldSpecial.isChecked()) ? 3 : 0, specialChars,
                 shouldSpecial.isChecked());
     }
 
