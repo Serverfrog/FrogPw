@@ -80,7 +80,7 @@ public class MainActivity extends Activity {
     @Click(R.id.generate)
     public void onGenerateButtonPressed() {
 
-        if (strengthField.getEditableText().toString().isEmpty()) {
+        if (strengthField.getEditableText().toString().trim().length() == 0) {
             return;
         }
         int strenght = Integer.valueOf(strengthField.getEditableText().toString());
@@ -98,15 +98,20 @@ public class MainActivity extends Activity {
 
             specialChars = specialCharsField.getEditableText().toString();
         }
-        if (shouldSmall.isChecked() && shouldBig.isChecked() && shouldNumbers.isChecked()
-                && shouldSpecial.isChecked() && specialChars.trim().isEmpty()) {
+        if (!shouldSmall.isChecked() && !shouldBig.isChecked() && !shouldNumbers.isChecked()
+                && !shouldSpecial.isChecked() && specialChars.trim().trim().length() == 0) {
             return;
         }
         BackgroundExecutor.cancelAll("generator", true);
-        generatePassword(createWebsite, password, strenght, (shouldSmall.isChecked()) ? 1 : 0,
-                (shouldBig.isChecked()) ? 1 : 0, (shouldNumbers.isChecked()) ? 2 : 0,
-                (shouldSpecial.isChecked()) ? 3 : 0, specialChars,
-                shouldSpecial.isChecked());
+        try {
+
+            generatePassword(createWebsite, password, strenght, (shouldSmall.isChecked()) ? 1 : 0,
+                    (shouldBig.isChecked()) ? 1 : 0, (shouldNumbers.isChecked()) ? 2 : 0,
+                    (shouldSpecial.isChecked()) ? 3 : 0, specialChars,
+                    shouldSpecial.isChecked());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Background(id = "generator", serial = "generator")

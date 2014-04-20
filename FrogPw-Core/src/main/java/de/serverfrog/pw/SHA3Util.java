@@ -70,11 +70,11 @@ public final class SHA3Util {
             sb1.append(character);
         }
         String chars = sb1.toString();
-        byte[] hash = hash(password);
-        hash = hash(add(hash, website.getAddress().getBytes()));
-        hash = hash(add(hash, website.getType().getName().getBytes()));
-        hash = hash(add(hash, website.getType().getKey().getBytes()));
-        hash = hash(add(hash, chars.getBytes()));
+        byte[] hash = password;
+        hash = add(hash, website.getAddress().getBytes());
+        hash = add(hash, website.getType().getName().getBytes());
+        hash = add(hash, website.getType().getKey().getBytes());
+        hash = add(hash, chars.getBytes());
         hash = hash(add(hash, new byte[]{Integer.valueOf(size).byteValue()}), size);
         passwordEnd = eh.encode(hash);
         return passwordEnd;

@@ -75,7 +75,7 @@
                             <manifest>
                                 <versionName>${project.version}</versionName>
                                 <debuggable>false</debuggable>
-                                <versionCodeUpdateFromVersion>true</versionCodeUpdateFromVersion>
+                                <versionCodeAutoIncrement>true</versionCodeAutoIncrement>
                             </manifest> 
                         </configuration>
                     </execution>
