@@ -11,5 +11,5 @@
     <string name="special">Special Chars</string>
     <string name="specialChars">!"$%/()=?*'_:;,.#+|~\}][{@€</string>
     <string name="generate">Generate Password</string>
-    <string name="strength">Password Strength</string>
+    <string name="lenght">Password lenght</string>
 </resources>

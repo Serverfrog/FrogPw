@@ -14,7 +14,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package de.serverfrog.pw;
 
 import org.fsf.maandree.ConcurrentSHA3;
@@ -68,7 +67,7 @@ public final class SHA3Util {
         hash = add(hash, website.getType().getName().getBytes());
         hash = add(hash, website.getType().getKey().getBytes());
         hash = add(hash, chars.getBytes());
-        hash = hash(add(hash, new byte[]{Integer.valueOf(size).byteValue()}), size);
+        hash = hash(add(hash, hash(new byte[]{Integer.valueOf(size).byteValue()})), size);
         passwordEnd = eh.encode(hash);
         return passwordEnd;
     }

@@ -64,8 +64,8 @@ public class MainActivity extends Activity {
     @ViewById(R.id.specialChars)
     EditText specialCharsField;
 
-    @ViewById(R.id.strength)
-    EditText strengthField;
+    @ViewById(R.id.lenght)
+    EditText lenghtField;
     @ViewById(R.id.outputPassword)
     EditText outputPassword;
 
@@ -96,10 +96,10 @@ public class MainActivity extends Activity {
     @Click(R.id.generate)
     public void onGenerateButtonPressed() {
 
-        if (strengthField.getEditableText().toString().trim().length() == 0) {
+        if (lenghtField.getEditableText().toString().trim().length() == 0) {
             return;
         }
-        int strenght = Integer.valueOf(strengthField.getEditableText().toString());
+        int strenght = Integer.valueOf(lenghtField.getEditableText().toString());
         if (strenght <= 0) {
             return;
         }

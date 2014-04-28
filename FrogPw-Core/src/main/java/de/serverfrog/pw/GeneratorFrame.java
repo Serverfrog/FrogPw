@@ -153,11 +153,11 @@ public class GeneratorFrame extends javax.swing.JFrame {
 
         jLabel4.setText("Amount");
 
-        numberAmount.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(0), null, Integer.valueOf(1)));
+        numberAmount.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(2), Integer.valueOf(0), null, Integer.valueOf(1)));
 
         jLabel5.setText("Amount");
 
-        customeAmount.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(0), null, Integer.valueOf(1)));
+        customeAmount.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(3), Integer.valueOf(0), null, Integer.valueOf(1)));
 
         jLabel6.setText("Website Name");
 

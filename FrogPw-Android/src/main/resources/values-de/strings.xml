@@ -11,5 +11,5 @@
     <string name="special">Sonderzeichen</string>
     <string name="specialChars">!"§$%/()=?*'_:;,.#+|~\}][{öäüÖÄÜ@€</string>
     <string name="generate">Generiere Passwort</string>
-    <string name="strength">Passwort Stärke</string>
+    <string name="lenght">Passwort Länge</string>
 </resources>

@@ -115,10 +115,10 @@
             android:textSize="18sp" 
             android:inputType="text" />
         <EditText
-            android:id="@+id/strength"
+            android:id="@+id/lenght"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="@+string/strength"
+            android:hint="@+string/lenght"
             android:textSize="18sp"
             android:digits="0123456789" 
             android:inputType="number" />
