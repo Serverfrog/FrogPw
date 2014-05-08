@@ -11,7 +11,7 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("./MainView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/de/serverfrog/pw/ui/MainView.fxml"));
 
         Scene scene = new Scene(root);
         scene.getStylesheets().add("/styles/Styles.css");
@@ -19,6 +19,7 @@ public class MainApp extends Application {
         stage.setTitle("FrogPw Generator");
         stage.setScene(scene);
         stage.setResizable(false);
+
         stage.show();
         stage.toFront();
     }

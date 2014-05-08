@@ -29,5 +29,12 @@
             <goals>
                 <goal>jfx:run</goal>
             </goals>
+        </action>
+    <action>
+            <actionName>CUSTOM-deploy</actionName>
+            <displayName>deploy</displayName>
+            <goals>
+                <goal>jfx:native</goal>
+            </goals>
         </action>        
 </actions>

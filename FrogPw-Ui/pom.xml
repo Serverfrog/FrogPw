@@ -36,7 +36,10 @@
                     <mainClass>${main.Class}</mainClass>
                     <jfxMainAppJarName>${app.name}</jfxMainAppJarName>
                     <vendor>Serverfrog.de</vendor>
-                    <needMenu>true</needMenu>
+                    <needMenu>true</needMenu>     
+                    <jfxMainAppJarName>${project.build.finalName}.jar</jfxMainAppJarName>
+                    <identifier>${project.build.finalName}</identifier>
+                    <nativeReleaseVersion>${project.version}</nativeReleaseVersion>
                 </configuration>
             </plugin>
         </plugins>

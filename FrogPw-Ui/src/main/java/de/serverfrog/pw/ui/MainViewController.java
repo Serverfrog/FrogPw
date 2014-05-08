@@ -136,7 +136,7 @@ public class MainViewController implements Initializable {
             }
             Stage dialog = new Stage(StageStyle.UTILITY);
             dialog.initModality(Modality.APPLICATION_MODAL);
-            FXMLLoader fXMLLoader = new FXMLLoader(getClass().getResource("./ConfigLoadDialog.fxml"));
+            FXMLLoader fXMLLoader = new FXMLLoader(getClass().getResource("/de/serverfrog/pw/ui/ConfigLoadDialog.fxml"));
             Parent root = fXMLLoader.<Parent>load();
             ConfigLoadDialogController controller
                     = fXMLLoader.<ConfigLoadDialogController>getController();
