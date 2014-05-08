@@ -17,11 +17,13 @@
 
 package de.serverfrog.pw;
 
+import java.io.Serializable;
+
 /**
  *
  * @author serverfrog
  */
-public enum WebsiteType {
+public enum WebsiteType implements Serializable  {
 
     DEFAULT("default", "$3A=mC6X5^*Qbae-GfUr,7V&@KD%p&'rP;%EKzYC.rf!e^aR]dX=.L"
             + "d?}^u.dC!8DE&Rd_DEb?9Jts646}DaP]]s)g!WsP@G#ST2qemWN(N.vCD#h*Y4!"

@@ -14,17 +14,22 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package de.serverfrog.pw;
+
+import java.io.Serializable;
+import java.util.Objects;
 
 /**
  *
  * @author serverfrog
  */
-public class Website {
+public class Website implements Serializable {
 
     private WebsiteType type;
     private String address;
+
+    public Website() {
+    }
 
     public Website(WebsiteType type, String address) {
         this.type = type;
@@ -50,6 +55,32 @@ public class Website {
     @Override
     public String toString() {
         return "Website{" + "type=" + type + ", address=" + address + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.type);
+        hash = 97 * hash + Objects.hashCode(this.address);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Website other = (Website) obj;
+        if (this.type != other.type) {
+            return false;
+        }
+        if (!Objects.equals(this.address, other.address)) {
+            return false;
+        }
+        return true;
     }
 
 }

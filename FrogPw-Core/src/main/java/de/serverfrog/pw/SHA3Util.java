@@ -76,7 +76,7 @@ public final class SHA3Util {
         return hash(bytes, 256);
     }
 
-    private static byte[] hash(byte[] bytes, int size) {
+    public static byte[] hash(byte[] bytes, int size) {
         byte[] hashbytes = new byte[bytes.length];
         SHA3Util.arraycopy(bytes, 0, hashbytes, 0, bytes.length);
         ConcurrentSHA3 sHA3 = new ConcurrentSHA3();
@@ -102,7 +102,7 @@ public final class SHA3Util {
         }
     }
 
-    private static byte[] add(byte[] bytes, byte[] toAdd) {
+    public static byte[] add(byte[] bytes, byte[] toAdd) {
         byte[] addBytes = new byte[toAdd.length + bytes.length];
         SHA3Util.arraycopy(bytes, 0, addBytes, 0, bytes.length);
         SHA3Util.arraycopy(toAdd, 0, addBytes, bytes.length, toAdd.length);

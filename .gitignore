@@ -16,3 +16,6 @@ hs_err_pid*
 /FrogPw-Core/target/
 /FrogPwAndroid/target/
 /FrogPw-Android/target/
+/FrogPwUi/target/
+/FrogPw-Ui/target/
+/SqlExcecuter/target/
