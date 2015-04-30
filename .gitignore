@@ -1,3 +1,18 @@
+# Created by https://www.gitignore.io
+
+### Gradle ###
+.gradle
+build/
+.nb-gradle
+
+# Ignore Gradle GUI config
+gradle-app.setting
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
+
+
+### Java ###
 *.class
 
 # Mobile Tools for Java (J2ME)
@@ -10,12 +25,4 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
-/target/
-/FrogPwAndroid/gen/
-/FrogPwAndroid/bin/
-/FrogPw-Core/target/
-/FrogPwAndroid/target/
-/FrogPw-Android/target/
-/FrogPwUi/target/
-/FrogPw-Ui/target/
-/SqlExcecuter/target/
+
