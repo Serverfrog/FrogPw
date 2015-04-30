@@ -1,0 +1,12 @@
+language: java
+before_install:
+  # download the latest android sdk and unzip
+  - wget http://dl.google.com/android/android-sdk_r22.6.2-linux.tgz
+  - tar -zxf android-sdk_r22.6.2-linux.tgz
+  - export ANDROID_HOME=`pwd`/android-sdk-linux
+  - export PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
+  # only update the sdk for the tools and platform-tools (1,2) and whatever api level
+  # you are building for android (run "android list sdk" to get the full list.  9 = 2.3.3 or API level 10
+  - android list sdk --extended
+  - (sleep 5 && while [ 1 ]; do sleep 1; echo y; done ) | android update sdk --no-ui --filter platform-tool,android-7,sysimg-7,build-tools-19.0.3
+  # - yes | android update sdk --filter platform-tools,2,android-7 --no-ui --force
