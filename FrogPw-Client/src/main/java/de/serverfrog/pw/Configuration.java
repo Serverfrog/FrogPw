@@ -28,34 +28,32 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Configuration implements Serializable{
+public class Configuration implements Serializable {
 
     private Website website;
-    
+
     private int lenght;
-    
+
     private boolean shouldSmall;
-    
+
     private boolean shouldBig;
-    
+
     private boolean shouldNumbers;
-    
+
     private boolean shouldSpecial;
-    
+
     private int smallWeigth;
-    
+
     private int bigWeigth;
-    
+
     private int numbersWeigth;
-    
+
     private int specialWeigth;
-    
+
     private String specialChars;
 
     public Configuration(String specialChars) {
         this.specialChars = specialChars;
     }
-   
-    
 
 }

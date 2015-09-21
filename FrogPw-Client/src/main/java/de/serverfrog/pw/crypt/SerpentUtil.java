@@ -16,25 +16,28 @@
  */
 package de.serverfrog.pw.crypt;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
+import java.security.SecureRandom;
 import java.security.Security;
-import java.util.Arrays;
+import java.security.spec.InvalidKeySpecException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.crypto.Cipher;
 import javax.crypto.CipherInputStream;
 import javax.crypto.CipherOutputStream;
 import javax.crypto.NoSuchPaddingException;
+import javax.crypto.SecretKey;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
-import org.apache.commons.io.IOUtils;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
 /**
@@ -47,76 +50,85 @@ public class SerpentUtil {
         Security.addProvider(new BouncyCastleProvider());
     }
 
+    private static final String CIPHER_ALGORITHM = "Serpent";
+    private static final String KEY_ALGORITHM = "PBEWithSHA256And256BitAES-CBC-BC";
+
+    /**
+     * This Method builds a CipherOutputStream with the Serpent Cipher.
+     *
+     * @param os is the output Stream where the Encrypted Data should went.
+     * @param key is the Key for the Encryption.
+     * @return a CipherOutputStream with the Serpent Cipher.
+     */
     public static CipherOutputStream getOutputStream(OutputStream os, Key key) {
         try {
-            Cipher instance = Cipher.getInstance("Serpent", "BC");
-            instance.init(Cipher.ENCRYPT_MODE, key);
+            Cipher instance = Cipher.getInstance(CIPHER_ALGORITHM, "BC");
+            instance.init(Cipher.ENCRYPT_MODE, key, generateIV(instance));
             return new CipherOutputStream(os, instance);
-        } catch (InvalidKeyException | NoSuchAlgorithmException | NoSuchProviderException | NoSuchPaddingException ex) {
-            Logger.getLogger(SerpentUtil.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-    }
+        } catch (InvalidKeyException | NoSuchAlgorithmException | NoSuchProviderException | NoSuchPaddingException | InvalidAlgorithmParameterException ex) {
 
-    public static CipherInputStream getInputStream(InputStream os, Key key) throws IOException {
-        try {
-            Cipher instance = Cipher.getInstance("Serpent", "BC");
-            instance.init(Cipher.DECRYPT_MODE, key);
-            return new CipherInputStream(os, instance);
-        } catch (InvalidKeyException | NoSuchAlgorithmException | NoSuchProviderException | NoSuchPaddingException ex) {
-            if (ex.getClass().equals(InvalidKeyException.class)) {
-                throw new IOException("Password Wrong");
-            }
             Logger.getLogger(SerpentUtil.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
 
     /**
-     * Print all Security providers and their algos
+     * Creates a CipherInputStream which reads from a InputStream where exist
+     * Data which is encrypted with Serpent.
      *
-     * @param args args
-     * @throws Exception Exception
+     * @param is is the InputStream which contains the encrypted Data.
+     * @param key is the Key for the encryption
+     * @return a CipherInputStream which wraps the given InputStream.
+     * @throws IOException if the Password is wrong.
      */
-    public static void main(String[] args) throws Exception {
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        SecretKeySpec keySpec = new SecretKeySpec("test".getBytes("UTF-8"), "AES");
-        try (CipherOutputStream outputStream = SerpentUtil.getOutputStream(byteArrayOutputStream, keySpec)) {
-            IOUtils.write("TEST", outputStream);
+    public static CipherInputStream getInputStream(InputStream is, Key key) throws IOException {
+        try {
+            Cipher instance = Cipher.getInstance(CIPHER_ALGORITHM, "BC");
+            instance.init(Cipher.DECRYPT_MODE, key, new IvParameterSpec(new byte[instance.getBlockSize()]));
+            return new CipherInputStream(is, instance);
+        } catch (InvalidAlgorithmParameterException | NoSuchAlgorithmException | NoSuchProviderException | NoSuchPaddingException ex) {
+            throw new IOException(ex);
+        } catch (InvalidKeyException ex) {
+            throw new IOException("Invalid Key", ex);
         }
-        System.out.println(Arrays.toString(byteArrayOutputStream.toByteArray()));
-        System.out.println(byteArrayOutputStream.toString("UTF-8"));
-        byte[] toByteArray = byteArrayOutputStream.toByteArray();
-        ByteArrayInputStream arrayInputStream = new ByteArrayInputStream(toByteArray);
-        CipherInputStream inputStream = SerpentUtil.getInputStream(arrayInputStream, new SecretKeySpec("test".getBytes("UTF-8"), "AES"));
-        byte[] bytes = new byte[1048576];
+    }
 
-        IOUtils.read(inputStream, bytes);
+    /**
+     * Generate the key for the en-/decryption from the password and the Salt.
+     *
+     * @param password is the password for the en-/decryption.
+     * @param salt is the salt for the en-/decryption.
+     * @return the SecretKey for the en-/decryption.
+     * @throws IOException is thrown if Something went wrong while the Key is
+     * generated. Should not happend.
+     */
+    public static SecretKey generateKey(byte[] password, byte[] salt) throws IOException {
+        try {
+            SecretKeyFactory factory = SecretKeyFactory.getInstance(KEY_ALGORITHM, "BC");
+            PBEKeySpec spec = new PBEKeySpec(new String(password).toCharArray(), salt, 100000);
+            SecretKey temp = factory.generateSecret(spec);
+            byte[] keybytes = new byte[16];
+            System.arraycopy(temp.getEncoded(), 0, keybytes, 0, keybytes.length);
+            return new SecretKeySpec(keybytes, CIPHER_ALGORITHM);
+        } catch (NoSuchAlgorithmException | NoSuchProviderException | InvalidKeySpecException ex) {
+            Logger.getLogger(SerpentUtil.class.getName()).log(Level.SEVERE, null, ex);
+            throw new IOException(ex);
+        }
+    }
 
-        System.out.println(new String(bytes, "UTF-8").trim());
-
-//
-//        for (Provider provider : Security.getProviders()) {
-//            System.out.println("");
-//            System.out.println("");
-//            System.out.println("");
-//            System.out.println("-------------------------------");
-//            System.out.println("Name: " + provider.getName());
-//            System.out.println("Info: " + provider.getInfo());
-//            for (Map.Entry<Object, Object> entry : provider.entrySet()) {
-//                System.out.println("Key: Class:" + entry.getKey().getClass() + " String: " + entry.getKey());
-//                System.out.println("Value: Class:" + entry.getValue().getClass() + " String: " + entry.getValue());
-//            }
-//            for (Provider.Service service : provider.getServices()) {
-//                System.out.println("Service: Algorithm:" + service.getAlgorithm()
-//                        + " ClassName:" + service.getClassName()
-//                        + " Type:" + service.getType() + " toString:" + service.toString());
-//            }
-//            for (Object object : provider.values()) {
-//                System.out.println("Value: " + object.getClass() + " toString:" + object.toString());
-//
-//            }
-//            System.out.println("-------------------------------");
-//        }
+    /**
+     * Generate the IvParameterSpec.
+     *
+     * @param c is the Cipher for the en-/decryption.
+     * @return the IvParameterSpec for the given Cipher.
+     */
+    private static IvParameterSpec generateIV(Cipher c) {
+        try {
+            byte[] iv = new byte[c.getBlockSize()];
+            SecureRandom.getInstanceStrong().nextBytes(iv);
+            return new IvParameterSpec(iv);
+        } catch (NoSuchAlgorithmException ex) {
+            throw new RuntimeException(ex);
+        }
     }
 }

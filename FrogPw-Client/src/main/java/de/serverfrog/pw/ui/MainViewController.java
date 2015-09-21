@@ -19,9 +19,11 @@ package de.serverfrog.pw.ui;
 import com.sun.javafx.collections.ImmutableObservableList;
 import de.serverfrog.pw.Configuration;
 import de.serverfrog.pw.ConfigurationUtil;
+import de.serverfrog.pw.SHA3Util;
 import de.serverfrog.pw.Website;
 import de.serverfrog.pw.WebsiteType;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -144,6 +146,8 @@ public class MainViewController implements Initializable {
                 controller.prepareList(masterPasswordField.getText());
             } catch (IOException exception) {
                 this.messageField.setText(exception.getMessage());
+
+                Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, exception);
                 return;
             }
             this.messageField.setText("");
@@ -159,16 +163,25 @@ public class MainViewController implements Initializable {
 
     @FXML
     public void onGenerateButton(ActionEvent ae) {
-        long nanoTime = System.nanoTime();
+        Configuration config = buildConfiguration();
 
         if (saveWebsite.isSelected()) {
             try {
-                ConfigurationUtil.addConfiguration(buildConfiguration(), masterPasswordField.getText().getBytes("UTF-8"));
+                ConfigurationUtil.addConfiguration(config, masterPasswordField.getText().getBytes("UTF-8"));
             } catch (IOException ex) {
                 Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        this.generatedField.setText("Generated in " + (System.nanoTime() - nanoTime));
+
+        try {
+            String generatePassword = SHA3Util.generatePassword(config.getWebsite(), this.masterPasswordField.getText().getBytes("UTF-8"),
+                    config.getLenght(), config.getSmallWeigth(), config.getBigWeigth(), config.getNumbersWeigth(),
+                    config.getSpecialWeigth(), config.getSpecialChars().toCharArray());
+
+            this.generatedField.setText(generatePassword);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public Configuration buildConfiguration() {
